@@ -1,16 +1,17 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
-  <title>Image 1</title>
+  <title>Picture 1</title>
 </head>
 <body>
-  <h1>Image 1</h1>
+  <h1>Picture 1</h1>
 
-  <img src="images/photo1.jpg" alt="Cropped Photo 1" width="500">
+  <!-- Display the first image -->
+  <img src="MediaClass01.jpg" 
 
+  <!-- Explanation paragraph -->
   <p>
-    I think the abstract colors are really interesting and the bright contrasting colors create a really striking composition.
-
+  I think the abstract colors are really interesting and the bright contrasting colors create a really striking composition.
   </p>
 
   <!-- Navigation links -->
