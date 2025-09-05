@@ -4,8 +4,8 @@
      Max's Website
 <body>
 
-<h1Photos</h1>
-  <p>Links below:</p>
+
+  <p>Photo Links below:</p>
 
   <ul>
     <li><a href="Picture 1.html">View Image 1</a></li>
