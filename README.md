@@ -11,5 +11,9 @@
     ![Alt text](MediaClass01.jpg 123123")
       <img src="MediaClass02.jpg"> 
     ![Alt text](MediaClass01.jpg hello")
+    <figure>
+    <img src="MediaClass02.jpg" />
+    <figcaption>TEST</figcaption>
+</figure>
 </body>
 </html>
