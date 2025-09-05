@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image 1</title>
+</head>
+<body>
+  <h1>Image 1</h1>
+
+  <!-- Display the first image -->
+  <img src="images/photo1.jpg" alt="Cropped Photo 1" width="500">
+
+  <!-- Explanation paragraph -->
+  <p>
+    I chose this image because it captures a moment of stillness and balance. 
+    My focus was on using the rule of thirds and leading lines to create visual interest.
+  </p>
+
+  <!-- Navigation links -->
+  <p>
+    <a href="index.html">Back to Home</a> | 
+    <a href="image2.html">Next: Image 2</a>
+  </p>
+</body>
+</html>
