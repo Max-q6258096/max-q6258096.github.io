@@ -4,7 +4,7 @@
      Max's Website
 <body>
 
-		<h1>Photos</h1>
+<h1Photos</h1>
   <p>Links below:</p>
 
   <ul>
