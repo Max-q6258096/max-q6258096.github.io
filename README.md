@@ -6,10 +6,10 @@
 <body>
     <p>This is my <em>first</em> web page<br></p>
     <p>Test</p>
-    <img src="[ima](https://github.com/Max-q6258096/pictures.git)"> 
+    <img src="MediaClass01.jpg"> 
     <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Max-q6258096/pictures.git">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/Max-q6258096/pictures.git">
+  <source media=" srcset="https://github.com/Max-q6258096/pictures.git">
+  <source media=" srcset="https://github.com/Max-q6258096/pictures.git">
 </picture>
 </body>
 </html>
