@@ -9,8 +9,8 @@
     <figure>
     <img src="MediaClass02.jpg" />
     <figcaption> I think the lighting composition around the silhouette of the central figure in the portrait creates a unique image and the sun in the background behind it adds to the composition.  </figcaption>
-		<h1>Photost</h1>
-  <p>Click on the links below to see my photos and their descriptions:</p>
+		<h1>Photos</h1>
+  <p>Links below:</p>
 
   <ul>
     <li><a href="Picture 1.html">View Image 1</a></li>
