@@ -14,7 +14,7 @@
 
   <ul>
     <li><a href="MediaClass01.jpg">View Image 1</a></li>
-    <li><a href="iMediaClass02.jpg">View Image 2</a></li>
+    <li><a href="MediaClass02.jpg">View Image 2</a></li>
 	<div>
 </figure>
 </body>
