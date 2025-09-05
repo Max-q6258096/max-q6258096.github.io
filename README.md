@@ -13,8 +13,8 @@
   <p>Click on the links below to see my photos and their descriptions:</p>
 
   <ul>
-    <li><a href="MediaClass01.jpg">View Image 1</a></li>
-    <li><a href="MediaClass02.jpg">View Image 2</a></li>
+    <li><a href="Picture 1">View Image 1</a></li>
+    <li><a href="Picture 2">View Image 2</a></li>
 	<div>
 </figure>
 </body>
