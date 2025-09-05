@@ -9,11 +9,7 @@
     <figure>
     <img src="MediaClass02.jpg" />
     <figcaption>Picture 2</figcaption>
-         <div>
-	<img src="MediaClass02.jpg" />
 	<div>
-	<p>Text </p>
-	</div>
 </figure>
 </body>
 </html>
