@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+	
 <head>
      Max's Website
+	
 <body>
 
  <h1>Max Cane September 5th 2023</h1> 
