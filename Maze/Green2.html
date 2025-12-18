@@ -38,7 +38,7 @@
             height: auto;      
             border: 4px solid #333;
             border-radius: 4px;
-            cursor: zoom-in; /* Changes cursor to a magnifying glass */
+            cursor: zoom-in;
             transition: transform 0.3s ease, border-color 0.3s ease;
             z-index: 1;
         }
@@ -47,10 +47,9 @@
             border-color: #00FF00;
         }
 
-        /* NEW: This class doubles the size when active */
         .enlarged {
-            transform: scale(2.0); /* Doubles the size */
-            z-index: 10; /* Ensures it appears on top of everything else */
+            transform: scale(2.0);
+            z-index: 10;
             cursor: zoom-out;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
@@ -94,7 +93,7 @@
 <body>
     <div class="container">
         <h1>THE LOCKED DOOR</h1>
-        <p> In this room you see four statues. A fairy tale book. A skyscraper. A group of actors performing in a play. And a figure holding the head of a woman with snakes in her hair. What is the word that connects these things?</p>
+        <p> In this room you see three statues. Hands. Feet. And a hammer next to a tool box. What do they all have in common? </p>
         
         <div class="image-gallery">
             <img src="Green1.jpg" alt="Puzzle Clue 1" class="puzzle-image" onclick="toggleSize(this)">
@@ -109,15 +108,18 @@
 
             <div id="hint-container">
                 <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
-                <p id="hint-text"> What do almost all books have? Something that is also true for every movie, TV show, or play? </p>
+                <p id="hint-text"> Pay attention that it's just feet and hands and not arms and legs, could it be something about the toes and fingers? What word could link them to a hammer and a toolbox? </p>
             </div>
         </div>
     </div>
 
     <script>
-        // NEW: Function to toggle the "enlarged" class
         function toggleSize(image) {
             image.classList.toggle('enlarged');
+        }
+
+        function revealHint() {
+            document.getElementById('hint-text').style.display = 'block';
         }
 
         function processEntry(event) {
@@ -127,14 +129,33 @@
             const correctCode = "stories"; 
 
             if (typedValue === correctCode) {
-                window.location.href = "Green3.html";
+                // 1. Mark GREEN as completed
+                localStorage.setItem('greenPathComplete', 'true');
+
+                // 2. Check the status of other paths
+                const isRedDone = localStorage.getItem('redPathComplete') === 'true';
+                const isBlueDone = localStorage.getItem('bluePathComplete') === 'true';
+
+                // 3. Logic for where to go next
+                if (isRedDone && isBlueDone) {
+                    // All three paths finished!
+                    window.location.href = "MasterVictory.html";
+                } 
+                else if (isRedDone) {
+                    // Green is done AND Red is done
+                    window.location.href = "GreenRedTransition.html";
+                } 
+                else if (isBlueDone) {
+                    // Green is done AND Blue is done
+                    window.location.href = "GreenBlueTransition.html";
+                } 
+                else {
+                    // This is the first path completed
+                    window.location.href = "Green3.html";
+                }
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
-        }
-
-        function revealHint() {
-            document.getElementById('hint-text').style.display = 'block';
         }
     </script>
 </body>
