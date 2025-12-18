@@ -121,18 +121,23 @@
             image.classList.toggle('enlarged');
         }
 
-        function processEntry(event) {
-            event.preventDefault(); 
-            
-            const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
-            const correctCode = "2143"; 
+    function processEntry(event) {
+    event.preventDefault(); 
+    
+    // Get the input, make it lowercase, and remove accidental spaces
+    const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
+    const correctCode = "2143"; 
 
-            if (typedValue === correctCode) {
-                window.location.href = "2143.html";
-            } else {
-                alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
-            }
-        }
+    // This alert will show you EXACTLY what the computer sees.
+    // The brackets [ ] will show if there are hidden spaces.
+    console.log("Checking: [" + typedValue + "] against [" + correctCode + "]");
+
+    if (typedValue === correctCode) {
+        window.location.href = "2143.html";
+    } else {
+        alert("The lock doesn't budge. You entered: [" + typedValue + "]");
+    }
+}
 
         function revealHint() {
             document.getElementById('hint-text').style.display = 'block';
