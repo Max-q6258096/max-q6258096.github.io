@@ -14,7 +14,7 @@
             margin: 0;
         }
         .container { 
-            max-width: 1000px; /* Widened to fit two images */
+            max-width: 800px; /* Adjusted width for vertical layout */
             margin: auto; 
             background: #222; 
             padding: 30px; 
@@ -23,19 +23,18 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* The Image Gallery (Side-by-Side Layout) */
+        /* The Image Gallery (Vertical Layout) */
         .image-gallery {
             display: flex;
-            justify-content: center;
-            gap: 20px; /* Space between the images */
+            flex-direction: column; /* This stacks the images vertically */
+            align-items: center;    /* This centers the images in the column */
+            gap: 20px;              /* Space between the images */
             margin: 20px 0;
-            flex-wrap: wrap; /* Allows stacking on small screens */
         }
 
         .puzzle-image {
-            flex: 1; /* Makes images grow to fill space */
-            min-width: 300px; /* Prevents them from getting too tiny */
-            max-width: 450px; 
+            width: 100%;       
+            max-width: 500px;  /* Limits how large the images get */
             height: auto;      
             border: 4px solid #333;
             border-radius: 4px;
@@ -43,7 +42,7 @@
         }
 
         .puzzle-image:hover {
-            transform: scale(1.02); /* Slight zoom when hovering */
+            transform: scale(1.02); 
             border-color: #00FF00;
         }
 
@@ -73,7 +72,7 @@
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px dashed #555;
-            display: block; /* Visible immediately */
+            display: block; 
         }
 
         #hint-text {
