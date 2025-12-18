@@ -38,7 +38,7 @@
             height: auto;      
             border: 4px solid #333;
             border-radius: 4px;
-            cursor: zoom-in; /* Changes cursor to a magnifying glass */
+            cursor: zoom-in;
             transition: transform 0.3s ease, border-color 0.3s ease;
             z-index: 1;
         }
@@ -47,10 +47,9 @@
             border-color: #00FF00;
         }
 
-        /* NEW: This class doubles the size when active */
         .enlarged {
-            transform: scale(2.0); /* Doubles the size */
-            z-index: 10; /* Ensures it appears on top of everything else */
+            transform: scale(2.0);
+            z-index: 10;
             cursor: zoom-out;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
@@ -94,11 +93,11 @@
 <body>
     <div class="container">
         <h1>THE LOCKED DOOR</h1>
-        <p> This room also has a small peice of text in a framed picture nexted to the locked door. </p>
+        <p>The room has a small piece of paper on a pillar next to the locked door. You pick up the paper and read it. </p>
         
         <div class="image-gallery">
             <img src="Cypher3.jpg" alt="Puzzle Clue 1" class="puzzle-image" onclick="toggleSize(this)">
-            <img src="Red3Room.jpg" alt="Puzzle Clue 2" class="puzzle-image" onclick="toggleSize(this)">
+            <img src="Red3.png" alt="Puzzle Clue 2" class="puzzle-image" onclick="toggleSize(this)">
         </div>
 
         <div class="code-box">
@@ -110,18 +109,17 @@
 
             <div id="hint-container">
                 <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
-                <p id="hint-text"> The code is 12 letters long. It's made of 2 words. Try looking up to down instead of left to right. </p>
+                <p id="hint-text">The code is 12 letters long. It's made of 2 words. Try looking up to down instead of left to right.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // NEW: Function to toggle the "enlarged" class
         function toggleSize(image) {
             image.classList.toggle('enlarged');
         }
 
-function processEntry(event) {
+        function processEntry(event) {
             event.preventDefault(); 
             
             const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
@@ -132,9 +130,7 @@ function processEntry(event) {
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
-        }
-            }
-        }
+        } // Function ends here correctly now
 
         function revealHint() {
             document.getElementById('hint-text').style.display = 'block';
