@@ -4,27 +4,60 @@
     <meta charset="UTF-8">
     <title>The First Room</title>
     <style>
-        body { background: #1a1a1a; color: #ddd; font-family: sans-serif; text-align: center; padding-top: 50px; }
-        .container { max-width: 600px; margin: auto; background: #333; padding: 20px; border-radius: 8px; }
-        
-        /* New styling for your room image */
-        .room-image {
-            width: 100%;       /* Fills the width of the container */
-            max-width: 400px;  /* Keeps it from becoming too large */
-            height: auto;      /* Maintains aspect ratio */
-            border-radius: 4px;
-            margin-bottom: 20px; /* Space between image and text */
-            border: 2px solid #444;
+        body { 
+            background: #1a1a1a; 
+            color: #ddd; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
+        .container { 
+            /* Increased width to allow the image to grow */
+            max-width: 90vw; 
+            width: 100%;
+            margin: auto; 
+            background: #222; 
+            padding: 30px; 
+            border-radius: 8px; 
+            border: 1px solid #444;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        
+        .room-image {
+            /* Takes up 70% of the screen height or 100% of container width */
+            width: 100%;       
+            max-width: 800px;  /* Increased from 400px */
+            height: auto;
+            max-height: 65vh;  /* Prevents it from being taller than the screen */
+            object-fit: contain;
+            border-radius: 4px;
+            margin-bottom: 20px; 
+            border: 4px solid #333;
+            transition: border-color 0.3s ease;
+        }
+
+        .room-image:hover {
+            border-color: #4a90e2;
+        }
+
+        h1 { font-size: 2rem; color: #4a90e2; }
+        p { font-size: 1.1rem; line-height: 1.6; max-width: 700px; margin: 20px auto; }
+
         .choice { 
-            display: block; 
+            display: inline-block; 
             background: #4a90e2; 
             color: white; 
             text-decoration: none; 
-            padding: 10px; 
-            margin: 10px 0; 
+            padding: 15px 40px; 
+            margin: 20px 0; 
             border-radius: 4px; 
+            font-weight: bold;
+            text-transform: uppercase;
         }
         .choice:hover { background: #357abd; }
     </style>
@@ -34,7 +67,7 @@
         <img src="STARTGAME.png" alt="A mysterious room with three doors" class="room-image">
 
         <h1> The Great Museum Maze </h1>
-        <p> Rumors spread that there is a maze hidden somewhere inside a museum, but instead of halls of art it is a maze filled with puzzels. After spending years searching you find the rumored maze, something about it feels off to you, but if the rumors are true, if you can solve the museums maze you will be granted a great wish. Will you enter the maze?
+        <p> Rumors spread that there is a maze hidden somewhere inside a museum, but instead of halls of art it is a maze filled with puzzles. After spending years searching you find the rumored maze, something about it feels off to you, but if the rumors are true, if you can solve the museum's maze you will be granted a great wish. Will you enter the maze?</p>
             
         <a class="choice" href="Start2.html"> Enter The Maze </a>
     </div>
