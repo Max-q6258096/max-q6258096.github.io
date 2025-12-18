@@ -1,38 +1,146 @@
-<script>
-        // NEW: Function to toggle the "enlarged" class
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>THE PICTURE PUZZLE</title>
+    <style>
+        /* General Styles */
+        body { 
+            background: #1a1a1a; 
+            color: #ddd; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            padding: 20px;
+            margin: 0;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: auto; 
+            background: #222; 
+            padding: 30px; 
+            border-radius: 8px; 
+            border: 1px solid #444;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* The Image Gallery */
+        .image-gallery {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    
+            gap: 20px;              
+            margin: 20px 0;
+        }
+
+        .puzzle-image {
+            width: 100%;       
+            max-width: 500px;  
+            height: auto;      
+            border: 4px solid #333;
+            border-radius: 4px;
+            cursor: zoom-in;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            z-index: 1;
+        }
+
+        .puzzle-image:hover {
+            border-color: #00FF00;
+        }
+
+        .enlarged {
+            transform: scale(2.0);
+            z-index: 10;
+            cursor: zoom-out;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+
+        /* Input & Button Styles */
+        input[type="text"] {
+            background: #111;
+            border: 1px solid #00FF00;
+            color: #00FF00;
+            padding: 12px;
+            font-size: 1.1rem;
+            outline: none;
+            width: 60%;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #00FF00;
+            color: black;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        button:hover { background: #00cc00; }
+
+        #hint-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #555;
+            display: block; 
+        }
+
+        #hint-text {
+            display: none;
+            color: #ffae00;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>THE LOCKED DOOR</h1>
+        <p>You see four statues in the room. A fantasy book. A group of actors performing a play, and behind them is a statue of the writer of the play. And a statue of a skyscraper.</p>
+        
+        <div class="image-gallery">
+            <img src="Green2.png" alt="Puzzle Clue 1" class="puzzle-image" onclick="toggleSize(this)">
+        </div>
+
+        <div class="code-box">
+            <form id="puzzleForm" onsubmit="processEntry(event)">
+                <input type="text" id="userInput" placeholder="What word do they have in common?" required autocomplete="off">
+                <br>
+                <button type="submit">Unlock Door</button>
+            </form>
+
+            <div id="hint-container">
+                <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
+                <p id="hint-text">What is a word for something that almost all books have in common? It's also true for every TV show or play. It's found in tall buildings, but not small ones.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to zoom images
         function toggleSize(image) {
             image.classList.toggle('enlarged');
         }
 
+        // Function to show the hint
+        function revealHint() {
+            document.getElementById('hint-text').style.display = 'block';
+        }
+
+        // The core game logic
         function processEntry(event) {
             event.preventDefault(); 
             
             const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
 
-            // Combined the singular and plural check correctly here
+            // Accept singular or plural
             if (typedValue === "stories" || typedValue === "story") {
-                // Mark Green Path as complete if this is the end of the path
-                localStorage.setItem('greenPathComplete', 'true');
-
-                // Check other paths for the redirection logic
-                const isRedDone = localStorage.getItem('redPathComplete') === 'true';
-                const isBlueDone = localStorage.getItem('bluePathComplete') === 'true';
-
-                if (isRedDone && isBlueDone) {
-                    window.location.href = "MasterVictory.html";
-                } else if (isRedDone) {
-                    window.location.href = "GreenRedTransition.html";
-                } else if (isBlueDone) {
-                    window.location.href = "GreenBlueTransition.html";
-                } else {
+                
+                    // Default next page if this is the player's first completion
                     window.location.href = "Green2.html";
                 }
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
-        } // This closing bracket was missing!
-
-        function revealHint() {
-            document.getElementById('hint-text').style.display = 'block';
         }
     </script>
+</body>
+</html>
