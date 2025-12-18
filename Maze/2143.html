@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>THE PICTURE PUZZLE</title>
+    <title>THE RED PATH PUZZLE</title>
     <style>
         /* General Styles */
         body { 
@@ -44,7 +44,7 @@
         }
 
         .puzzle-image:hover {
-            border-color: #00FF00;
+            border-color: #ff3333; /* Red hover for the red path */
         }
 
         .enlarged {
@@ -57,8 +57,8 @@
         /* Input & Button Styles */
         input[type="text"] {
             background: #111;
-            border: 1px solid #00FF00;
-            color: #00FF00;
+            border: 1px solid #ff3333;
+            color: #ff3333;
             padding: 12px;
             font-size: 1.1rem;
             outline: none;
@@ -66,22 +66,15 @@
             margin-bottom: 10px;
         }
         button {
-            background: #00FF00;
-            color: black;
+            background: #ff3333;
+            color: white;
             border: none;
             padding: 12px 25px;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
         }
-        button:hover { background: #00cc00; }
-
-        #hint-container {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px dashed #555;
-            display: block; 
-        }
+        button:hover { background: #cc0000; }
 
         #hint-text {
             display: none;
@@ -92,8 +85,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>THE LOCKED DOOR</h1>
-        <p>The room has a small piece of paper on a pillar next to the locked door. You pick up the paper and read it. </p>
+        <h1>THE RED DOOR</h1>
+        <p>The red ink on the paper seems fresh. Solve the cypher to proceed.</p>
         
         <div class="image-gallery">
             <img src="Cypher3.jpg" alt="Puzzle Clue 1" class="puzzle-image" onclick="toggleSize(this)">
@@ -108,7 +101,7 @@
             </form>
 
             <div id="hint-container">
-                <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
+                <button type="button" onclick="revealHint()" style="background:#ffae00; color: black; font-size: 0.8rem; border:none; padding: 5px 10px; cursor: pointer;">Need a Hint?</button>
                 <p id="hint-text">The code is 12 letters long. It's made of 2 words. Try looking up to down instead of left to right.</p>
             </div>
         </div>
@@ -119,6 +112,10 @@
             image.classList.toggle('enlarged');
         }
 
+        function revealHint() {
+            document.getElementById('hint-text').style.display = 'block';
+        }
+
         function processEntry(event) {
             event.preventDefault(); 
             
@@ -126,14 +123,33 @@
             const correctCode = "spysuspected"; 
 
             if (typedValue === correctCode) {
-                window.location.href = "BGDoor.html";
+                // 1. Mark RED as completed
+                localStorage.setItem('redPathComplete', 'true');
+
+                // 2. Check if other paths are already done
+                const isBlueDone = localStorage.getItem('bluePathComplete') === 'true';
+                const isGreenDone = localStorage.getItem('greenPathComplete') === 'true';
+
+                // 3. Redirection Logic
+                if (isBlueDone && isGreenDone) {
+                    // All three paths finished!
+                    window.location.href = "Final1.html";
+                } 
+                else if (isBlueDone) {
+                    // Red is done AND Blue is done, lead to Blue+Red special transition
+                    window.location.href = "GreenFinal.html";
+                } 
+                else if (isGreenDone) {
+                    // Red is done AND Green is done, lead to Green+Red special transition
+                    window.location.href = "BlueFinal.html";
+                } 
+                else {
+                    // This is only the first path completed
+                    window.location.href = "BGDoor.html";
+                }
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
-        } // Function ends here correctly now
-
-        function revealHint() {
-            document.getElementById('hint-text').style.display = 'block';
         }
     </script>
 </body>
