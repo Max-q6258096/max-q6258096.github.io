@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Which door will you take next?</title>
+    <style>
+        body { background: #1a1a1a; color: #ddd; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .container { max-width: 600px; margin: auto; background: #333; padding: 20px; border-radius: 8px; }
+        
+        .room-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 2px solid #444;
+        }
+
+        .choice { 
+            display: block; 
+            background: #4a90e2; 
+            color: white; 
+            text-decoration: none; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 4px; 
+            transition: 0.3s;
+        }
+        .choice:hover { background: #357abd; }
+
+        .completed {
+            background: #444 !important;
+            color: #888 !important;
+            cursor: default;
+            pointer-events: none; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="BGDoor.jpg" alt="Which path will you take next?" class="room-image">
+
+        <h1> The Maze Continues </h1>
+        <p> You now stand alone in a room with two open doors. Which path will you take? </p>
+        
+        <a id="red-path" class="choice" href="Path1.html">Go through the Red Door <span id="red-status"></span></a>
+        <a id="green-path" class="choice" href="Path3.html">Go through the Green Door <span id="green-status"></span></a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // --- NEW PART: MARK BLUE PATH AS DONE ---
+            // Because the user is ON this page, we know they finished the Blue Path.
+            localStorage.setItem('bluePathComplete', 'true');
+
+            // --- CHECK RED PATH ---
+            if (localStorage.getItem('redPathComplete') === 'true') {
+                const redLink = document.getElementById('red-path');
+                document.getElementById('red-status').innerText = " (COMPLETED)";
+                redLink.classList.add('completed');
+            }
+
+            // --- CHECK GREEN PATH ---
+            if (localStorage.getItem('greenPathComplete') === 'true') {
+                const greenLink = document.getElementById('green-path');
+                document.getElementById('green-status').innerText = " (COMPLETED)";
+                greenLink.classList.add('completed');
+            }
+        };
+    </script>
+</body>
+</html>
