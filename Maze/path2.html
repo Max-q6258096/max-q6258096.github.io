@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>THE PICTURE PUZZLE</title>
+    <style>
+        /* General Styles */
+        body { 
+            background: #1a1a1a; 
+            color: #ddd; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            padding: 20px;
+            margin: 0;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: auto; 
+            background: #222; 
+            padding: 30px; 
+            border-radius: 8px; 
+            border: 1px solid #444;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* The Image Gallery */
+        .image-gallery {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;    
+            gap: 20px;              
+            margin: 20px 0;
+        }
+
+        .puzzle-image {
+            width: 100%;       
+            max-width: 500px;  
+            height: auto;      
+            border: 4px solid #333;
+            border-radius: 4px;
+            cursor: zoom-in; /* Changes cursor to a magnifying glass */
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            z-index: 1;
+        }
+
+        .puzzle-image:hover {
+            border-color: #00FF00;
+        }
+
+        /* NEW: This class doubles the size when active */
+        .enlarged {
+            transform: scale(2.0); /* Doubles the size */
+            z-index: 10; /* Ensures it appears on top of everything else */
+            cursor: zoom-out;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+
+        /* Input & Button Styles */
+        input[type="text"] {
+            background: #111;
+            border: 1px solid #00FF00;
+            color: #00FF00;
+            padding: 12px;
+            font-size: 1.1rem;
+            outline: none;
+            width: 60%;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #00FF00;
+            color: black;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        button:hover { background: #00cc00; }
+
+        #hint-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #555;
+            display: block; 
+        }
+
+        #hint-text {
+            display: none;
+            color: #ffae00;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>THE LOCKED DOOR</h1>
+        <p>Inside the room is a masked figure, they begin to speak. "I am the first riddle master. The code to the door in the soultion to my riddle." 
+          You cannot tell if the figure is a statue or a real person. The figure then says "Once, a famous space explorer discovered a new planet. He spent time discovering a new species he found on the planet. The explorer counted 379 Gilixans, 435 Phyrexians, and 125 Kreunaians... How many aliens are on the planet?".</p>
+        
+        <div class="image-gallery">
+            <img src="Cypher1.jpg" alt="Puzzle Clue 1" class="puzzle-image" onclick="toggleSize(this)">
+            <img src="Blue1Room.jpg" alt="Puzzle Clue 2" class="puzzle-image" onclick="toggleSize(this)">
+        </div>
+
+        <div class="code-box">
+            <form id="puzzleForm" onsubmit="processEntry(event)">
+                <input type="text" id="userInput" placeholder="Enter secret phrase..." required autocomplete="off">
+                <br>
+                <button type="submit">Unlock Door</button>
+            </form>
+
+            <div id="hint-container">
+                <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
+                <p id="hint-text">Read the riddle again and think about what the word 'alien' really means... </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // NEW: Function to toggle the "enlarged" class
+        function toggleSize(image) {
+            image.classList.toggle('enlarged');
+        }
+
+        function processEntry(event) {
+            event.preventDefault(); 
+            
+            const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
+            const correctCode = "one"; 
+
+            if (typedValue === correctCode) {
+                window.location.href = "elenor.html";
+            } else {
+                alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
+            }
+        }
+
+        function revealHint() {
+            document.getElementById('hint-text').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
