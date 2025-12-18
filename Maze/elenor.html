@@ -1,0 +1,119 @@
+E<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>THE PICTURE PUZZLE</title>
+    <style>
+        /* General Styles */
+        body { 
+            background: #1a1a1a; 
+            color: #ddd; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            padding: 20px;
+            margin: 0;
+        }
+        .container { 
+            max-width: 800px; /* Widened to fit a large image */
+            margin: auto; 
+            background: #222; 
+            padding: 30px; 
+            border-radius: 8px; 
+            border: 1px solid #444;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* The Image Styling */
+        .puzzle-image {
+            width: 100%;       /* Takes up the full width of the container */
+            max-width: 500px;  /* Limits how huge it gets on big screens */
+            height: auto;      /* Keeps the proportions perfect */
+            border: 4px solid #333;
+            margin: 20px auto;
+            display: block;    /* Centers the image */
+            border-radius: 4px;
+        }
+
+        /* Input & Button Styles */
+        input[type="text"] {
+            background: #111;
+            border: 1px solid #00FF00;
+            color: #00FF00;
+            padding: 12px;
+            font-size: 1.1rem;
+            outline: none;
+            width: 60%;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #00FF00;
+            color: black;
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        button:hover { background: #00cc00; }
+
+        #hint-container {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #555;
+            display: none;
+        }
+        #hint-text {
+            display: none;
+            color: #ffae00;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>THE LOCKED DOOR</h1>
+        <p>Inside you find a room with a mysterious picture. The password to the door is hidden within the details.</p>
+        
+        <img src="Cypher1.jpg" alt="Puzzle Clue" class="puzzle-image">
+
+        <div class="code-box">
+            <form id="puzzleForm" onsubmit="processEntry(event)">
+                <input type="text" id="userInput" placeholder="Enter secret phrase..." required autocomplete="off">
+                <br>
+                <button type="submit">Unlock Door</button>
+            </form>
+
+            <div id="hint-container">
+                <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
+                <p id="hint-text">Look closely at the bottom-right corner of the painting...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let attempts = 0;
+
+        function processEntry(event) {
+            event.preventDefault(); 
+            
+            const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
+            const correctCode = "elenor"; // CHANGE THIS to your actual secret word
+
+            if (typedValue === correctCode) {
+                window.location.href = typedValue + ".html";
+            } else {
+                attempts++;
+                alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
+                
+                if (attempts >= 3) {
+                    document.getElementById('hint-container').style.display = 'block';
+                }
+            }
+        }
+
+        function revealHint() {
+            document.getElementById('hint-text').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
