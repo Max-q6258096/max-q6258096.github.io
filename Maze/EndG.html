@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Gold Door</title>
+    <style>
+        body { 
+            background: #0a0a0a; 
+            color: #ddd; 
+            font-family: 'Courier New', monospace; 
+            text-align: center; 
+            padding: 50px 20px;
+            margin: 0;
+        }
+        .victory-container { 
+            max-width: 700px; 
+            margin: auto; 
+            background: #1a1a1a; 
+            padding: 40px; 
+            border-radius: 15px; 
+            border: 2px solid #d4af37; /* Gold border for the win */
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .victory-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #444;
+            margin-bottom: 30px;
+        }
+
+        h1 { 
+            color: #d4af37; 
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            color: #bbb;
+        }
+
+        .btn-restart {
+            background: transparent;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-restart:hover {
+            background: #d4af37;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="victory-container">
+        <img src="GoldEnd.png" alt="The Maze Exit" class="victory-image">
+
+        <h1>Fame </h1>
+        
+        <div class="message">
+            <p>Suddenly as you enter the room you are surronded by more money then you have ever seen. Millions of dollars and priceless artifacts, a security guard in the room tells you that there are men outside waiting to help you gather and transport the money and artifacts to your new mansion. </p>
+            <p>You live the life of one of the richest most luxurious billionaires to ever exist. But sometimes you wonder, what if this wasn't the right path, was the money really worth it? What else lied behind those other doors?.</p>
+        </div>
+
+        <button class="btn-restart" onclick="restartGame()">Begin the Nightmare Again</button>
+    </div>
+
+    <script>
+        function restartGame() {
+            // This clears all the progress stamps we saved
+            localStorage.clear();
+            // Redirects back to the very first page of your game
+            window.location.href = "Start.html"; 
+        }
+    </script>
+
+</body>
+</html>
