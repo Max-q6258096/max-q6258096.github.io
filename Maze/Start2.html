@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The First Room</title>
+    <style>
+        body { background: #1a1a1a; color: #ddd; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .container { max-width: 600px; margin: auto; background: #333; padding: 20px; border-radius: 8px; }
+        
+        /* New styling for your room image */
+        .room-image {
+            width: 100%;       /* Fills the width of the container */
+            max-width: 400px;  /* Keeps it from becoming too large */
+            height: auto;      /* Maintains aspect ratio */
+            border-radius: 4px;
+            margin-bottom: 20px; /* Space between image and text */
+            border: 2px solid #444;
+        }
+
+        .choice { 
+            display: block; 
+            background: #4a90e2; 
+            color: white; 
+            text-decoration: none; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border-radius: 4px; 
+        }
+        .choice:hover { background: #357abd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="StartRoom.jpg" alt="A mysterious room with three doors" class="room-image">
+
+        <h1>The Adventure Begins</h1>
+        <p>You stand alone in a room with three open doors. Which path will you take?</p>
+        
+        <a class="choice" href="Path1.html">Go through the Red Door</a>
+        <a class="choice" href="Path2.html">Go through the Blue Door</a>
+        <a class="choice" href="Path3.html">Go through the Green Door</a>
+
+    </div>
+</body>
+</html>
