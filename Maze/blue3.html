@@ -38,7 +38,7 @@
             height: auto;      
             border: 4px solid #333;
             border-radius: 4px;
-            cursor: zoom-in; /* Changes cursor to a magnifying glass */
+            cursor: zoom-in;
             transition: transform 0.3s ease, border-color 0.3s ease;
             z-index: 1;
         }
@@ -47,10 +47,9 @@
             border-color: #00FF00;
         }
 
-        /* NEW: This class doubles the size when active */
         .enlarged {
-            transform: scale(2.0); /* Doubles the size */
-            z-index: 10; /* Ensures it appears on top of everything else */
+            transform: scale(2.0);
+            z-index: 10;
             cursor: zoom-out;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
@@ -109,15 +108,18 @@
 
             <div id="hint-container">
                 <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
-                <p id="hint-text">  It isn't the letter 'Z'. Try reading the question of the riddle carefully... </p>
+                <p id="hint-text">It isn't the letter 'Z'. Try reading the question of the riddle carefully...</p>
             </div>
         </div>
     </div>
 
     <script>
-        // NEW: Function to toggle the "enlarged" class
         function toggleSize(image) {
             image.classList.toggle('enlarged');
+        }
+
+        function revealHint() {
+            document.getElementById('hint-text').style.display = 'block';
         }
 
         function processEntry(event) {
@@ -127,8 +129,30 @@
             const correctCode = "t"; 
 
             if (typedValue === correctCode) {
-                window.location.href = "RGDoor.html";
+                // Get progress status
+                const isRedDone = localStorage.getItem('redPathComplete') === 'true';
+                const isGreenDone = localStorage.getItem('greenPathComplete') === 'true';
+
+                // Scenario 1: BOTH Red and Green are done
+                if (isRedDone && isGreenDone) {
+                    window.location.href = "End1.html";
+                } 
+                // Scenario 2: Only Red is done
+                else if (isRedDone) {
+                    window.location.href = "GreenFinal.html";
+                } 
+                // Scenario 3: Only Green is done
+                else if (isGreenDone) {
+                    window.location.href = "RedFinal.html";
+                } 
+                // Scenario 4: Neither are done
+                else {
+                    window.location.href = "RGDoor.html";
+                }
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
         }
+    </script>
+</body>
+</html>
