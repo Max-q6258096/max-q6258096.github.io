@@ -94,8 +94,7 @@
 <body>
     <div class="container">
         <h1>THE LOCKED DOOR</h1>
-        <p>Inside the room is a masked figure, they begin to speak. "I am the second riddle master. The code to the door in the soultion to my riddle." 
-       "If seven days after 70 days ago was a Sunday, seven days before 70 days from today is what day of the week?" </p>
+        <p>"I am the final riddle master. Solve my riddle to proceed. "The first letter of the alphabet is A, and the letter B comes after the letter A. However, the letter you need to worry about is the last one. What's the last letter of the alphabet?" </p>
         
         <div class="image-gallery">
             <img src="Blue3Room.jpg" alt="Puzzle Clue" class="puzzle-image" onclick="toggleSize(this)">
@@ -105,12 +104,12 @@
             <form id="puzzleForm" onsubmit="processEntry(event)">
                 <input type="text" id="userInput" placeholder="Enter secret phrase..." required autocomplete="off">
                 <br>
-                <button type="submit">Unlock Door</button>
+                <button type="submit">Answer Riddle</button>
             </form>
 
             <div id="hint-container">
                 <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
-                <p id="hint-text"> If yesterday's day after tomorrow is Sunday, yesterday is Friday. Tomorrow's day before yesterday is yesterday. Do you remember what day yesterday is? Friday!.. </p>
+                <p id="hint-text">  It isn't Z. Try reading the question of the riddle carefully... </p>
             </div>
         </div>
     </div>
@@ -125,10 +124,10 @@
             event.preventDefault(); 
             
             const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
-            const correctCode = "sunday"; 
+            const correctCode = "t"; 
 
             if (typedValue === correctCode) {
-                window.location.href = "blue3.html";
+                window.location.href = "RGDoor.html";
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
