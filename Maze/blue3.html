@@ -129,23 +129,26 @@
             const correctCode = "t"; 
 
             if (typedValue === correctCode) {
-                // Get progress status
+                // 1. IMPORTANT: Save that the BLUE path is now done!
+                localStorage.setItem('bluePathComplete', 'true');
+
+                // 2. Get progress status of OTHER paths
                 const isRedDone = localStorage.getItem('redPathComplete') === 'true';
                 const isGreenDone = localStorage.getItem('greenPathComplete') === 'true';
 
-                // Scenario 1: BOTH Red and Green are done
+                // Scenario 1: Red and Green were ALREADY done. Now Blue is done too.
                 if (isRedDone && isGreenDone) {
-                    window.location.href = "End1.html";
+                    window.location.href = "End1.html"; // Total Victory
                 } 
-                // Scenario 2: Only Red is done
+                // Scenario 2: Red was done, now Blue is done. You need to go to Green.
                 else if (isRedDone) {
                     window.location.href = "GreenFinal.html";
                 } 
-                // Scenario 3: Only Green is done
+                // Scenario 3: Green was done, now Blue is done. You need to go to Red.
                 else if (isGreenDone) {
                     window.location.href = "RedFinal.html";
                 } 
-                // Scenario 4: Neither are done
+                // Scenario 4: Neither were done. This is your first path completed.
                 else {
                     window.location.href = "RGDoor.html";
                 }
