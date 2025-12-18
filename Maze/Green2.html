@@ -14,7 +14,7 @@
             margin: 0;
         }
         .container { 
-            max-width: 800px; 
+            max-width: 900px; 
             margin: auto; 
             background: #222; 
             padding: 30px; 
@@ -23,7 +23,7 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* The Image Gallery */
+        /* The Image Gallery - MODIFIED FOR SIZE */
         .image-gallery {
             display: flex;
             flex-direction: column; 
@@ -34,7 +34,7 @@
 
         .puzzle-image {
             width: 100%;       
-            max-width: 500px;  
+            max-width: 800px;  /* Increased from 500px to 800px */
             height: auto;      
             border: 4px solid #333;
             border-radius: 4px;
@@ -48,7 +48,7 @@
         }
 
         .enlarged {
-            transform: scale(2.0);
+            transform: scale(1.2); /* Adjusted scale for larger base image */
             z-index: 10;
             cursor: zoom-out;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
@@ -93,14 +93,14 @@
 <body>
     <div class="container">
         <h1>THE LOCKED DOOR</h1>
-        <p> In this room you see three statues. Hands. Feet. And a hammer next to a tool box. What do they all have in common? </p>
+        <p>In this room you see three statues. Hands. Feet. And a hammer next to a tool box. What do they all have in common?</p>
         
         <div class="image-gallery">
             <img src="Green3.png" alt="Puzzle Clue 1" class="puzzle-image" onclick="toggleSize(this)">
         </div>
 
         <div class="code-box">
-            <form id="puzzleForm" onsubmit="processEntry(event)">
+            <form id="puzzleForm" onsubmit="processEntry(event); return false;">
                 <input type="text" id="userInput" placeholder="What word do they have in common?" required autocomplete="off">
                 <br>
                 <button type="submit">Unlock Door</button>
@@ -108,7 +108,7 @@
 
             <div id="hint-container">
                 <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
-                <p id="hint-text"> Pay attention that it's just feet and hands and not arms and legs, could it be something about the toes and fingers? What word could link them to a hammer and a toolbox? </p>
+                <p id="hint-text">Pay attention that it's just feet and hands and not arms and legs, could it be something about the toes and fingers? What word could link them to a hammer and a toolbox?</p>
             </div>
         </div>
     </div>
@@ -124,11 +124,15 @@
 
         function processEntry(event) {
             event.preventDefault(); 
-            if (typedValue === "nails" || typedValue === "nail") {
+            
+            // Get the value FIRST
             const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
-            const correctCode = "nail"; 
+            console.log("Attempting code: " + typedValue);
 
-            if (typedValue === correctCode) {
+            // Logic to accept singular or plural
+            if (typedValue === "nails" || typedValue === "nail") {
+                console.log("Correct! Checking path status...");
+
                 // 1. Mark GREEN as completed
                 localStorage.setItem('greenPathComplete', 'true');
 
@@ -136,22 +140,18 @@
                 const isRedDone = localStorage.getItem('redPathComplete') === 'true';
                 const isBlueDone = localStorage.getItem('bluePathComplete') === 'true';
 
-                // 3. Logic for where to go next
+                // 3. Logic for where to go next (Check for uppercase/lowercase filenames here!)
                 if (isRedDone && isBlueDone) {
-                    // All three paths finished!
-                    window.location.href = "Final0.html";
+                    window.location.assign("Final0.html");
                 } 
                 else if (isRedDone) {
-                    // Green is done AND Red is done
-                    window.location.href = "BlueFinal.html";
+                    window.location.assign("BlueFinal.html");
                 } 
                 else if (isBlueDone) {
-                    // Green is done AND Blue is done
-                    window.location.href = "RedFinal.html";
+                    window.location.assign("RedFinal.html");
                 } 
                 else {
-                    // This is the first path completed
-                    window.location.href = "BRDoor.html";
+                    window.location.assign("BRDoor.html");
                 }
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
