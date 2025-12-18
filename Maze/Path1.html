@@ -14,7 +14,7 @@
             margin: 0;
         }
         .container { 
-            max-width: 800px; 
+            max-width: 1000px; /* Widened to fit two images */
             margin: auto; 
             background: #222; 
             padding: 30px; 
@@ -23,15 +23,28 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* The Image Styling */
+        /* The Image Gallery (Side-by-Side Layout) */
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between the images */
+            margin: 20px 0;
+            flex-wrap: wrap; /* Allows stacking on small screens */
+        }
+
         .puzzle-image {
-            width: 100%;       
-            max-width: 500px;  
+            flex: 1; /* Makes images grow to fill space */
+            min-width: 300px; /* Prevents them from getting too tiny */
+            max-width: 450px; 
             height: auto;      
             border: 4px solid #333;
-            margin: 20px auto;
-            display: block;    
             border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+
+        .puzzle-image:hover {
+            transform: scale(1.02); /* Slight zoom when hovering */
+            border-color: #00FF00;
         }
 
         /* Input & Button Styles */
@@ -56,12 +69,11 @@
         }
         button:hover { background: #00cc00; }
 
-        /* CHANGED: display: block makes this visible immediately */
         #hint-container {
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px dashed #555;
-            display: block; 
+            display: block; /* Visible immediately */
         }
 
         #hint-text {
@@ -74,9 +86,12 @@
 <body>
     <div class="container">
         <h1>THE LOCKED DOOR</h1>
-        <p>Inside you find a room with a mysterious picture. The password to the door is hidden within the details.</p>
+        <p>You find two mysterious frames. The password is hidden between the details of both.</p>
         
-        <img src="Cypher1.jpg" alt="Puzzle Clue" class="puzzle-image">
+        <div class="image-gallery">
+            <img src="Cypher1.jpg" alt="Puzzle Clue 1" class="puzzle-image">
+            <img src="Cypher2.jpg" alt="Puzzle Clue 2" class="puzzle-image">
+        </div>
 
         <div class="code-box">
             <form id="puzzleForm" onsubmit="processEntry(event)">
@@ -87,7 +102,7 @@
 
             <div id="hint-container">
                 <button type="button" onclick="revealHint()" style="background:#ffae00; font-size: 0.8rem;">Need a Hint?</button>
-                <p id="hint-text">Look closely at the spelling, check for typos that may form a word...</p>
+                <p id="hint-text">Compare the two images. Look closely at the spelling, check for typos that may form a word...</p>
             </div>
         </div>
     </div>
@@ -100,7 +115,6 @@
             const correctCode = "elenor"; 
 
             if (typedValue === correctCode) {
-                // CHANGED: Fixed the link so it goes to "elenor.html"
                 window.location.href = "elenor.html";
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
