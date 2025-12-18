@@ -133,11 +133,10 @@
 
             // Accept singular or plural
             if (typedValue === "stories" || typedValue === "story") {
-                
-                    // Default next page if this is the player's first completion
-                    window.location.href = "Green2.html";
-                }
+                // Success
+                window.location.href = "Green2.html";
             } else {
+                // Failure
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
         }
