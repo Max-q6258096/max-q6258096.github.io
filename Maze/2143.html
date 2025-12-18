@@ -121,16 +121,18 @@
             image.classList.toggle('enlarged');
         }
 
-        function processEntry(event) {
+function processEntry(event) {
             event.preventDefault(); 
             
             const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
-            const correctCode = "2143"; 
+            const correctCode = "spydetected"; 
 
             if (typedValue === correctCode) {
-                window.location.href = "2143.html";
+                window.location.href = "BGDoor.html";
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
+            }
+        }
             }
         }
 
