@@ -126,20 +126,22 @@
         }
 
         // The core game logic
-        function processEntry(event) {
-            event.preventDefault(); 
-            
-            const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
+       function processEntry(event) {
+    event.preventDefault(); 
+    
+    // Get the input and clean it up
+    const userInput = document.getElementById('userInput');
+    const typedValue = userInput.value.toLowerCase().trim();
 
-            // Accept singular or plural
-            if (typedValue === "stories" || typedValue === "story") {
-                // Success
-                window.location.href = "Green2.html";
-            } else {
-                // Failure
-                alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
-            }
-        }
+    if (typedValue === "stories" || typedValue === "story") {
+        // Change "green2.html" to match your actual filename exactly
+        window.location.href = "Green2.html"; 
+    } else {
+        alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
+        userInput.value = ""; // Clear the input for the user
+        userInput.focus();    // Put the cursor back in the box
+    }
+}
     </script>
 </body>
 </html>
