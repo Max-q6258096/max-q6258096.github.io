@@ -94,7 +94,7 @@
 <body>
     <div class="container">
         <h1>THE LOCKED DOOR</h1>
-        <p>You find a room with a locked door and a framed picture. Click the images to inspect them closely.</p>
+        <p> This room also has a small peice of text in a framed picture nexted to the locked door. </p>
         
         <div class="image-gallery">
             <img src="Cypher2.jpg" alt="Puzzle Clue 1" class="puzzle-image" onclick="toggleSize(this)">
@@ -125,10 +125,10 @@
             event.preventDefault(); 
             
             const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
-            const correctCode = "elenor"; 
+            const correctCode = "2143"; 
 
             if (typedValue === correctCode) {
-                window.location.href = "elenor.html";
+                window.location.href = "2143.html";
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
             }
