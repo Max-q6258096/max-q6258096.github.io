@@ -124,9 +124,9 @@
 
         function processEntry(event) {
             event.preventDefault(); 
-            
+            if (typedValue === "nails" || typedValue === "nail") {
             const typedValue = document.getElementById('userInput').value.toLowerCase().trim();
-            const correctCode = "stories"; 
+            const correctCode = "nail"; 
 
             if (typedValue === correctCode) {
                 // 1. Mark GREEN as completed
@@ -139,19 +139,19 @@
                 // 3. Logic for where to go next
                 if (isRedDone && isBlueDone) {
                     // All three paths finished!
-                    window.location.href = "MasterVictory.html";
+                    window.location.href = "Final0.html";
                 } 
                 else if (isRedDone) {
                     // Green is done AND Red is done
-                    window.location.href = "GreenRedTransition.html";
+                    window.location.href = "BlueFinal.html";
                 } 
                 else if (isBlueDone) {
                     // Green is done AND Blue is done
-                    window.location.href = "GreenBlueTransition.html";
+                    window.location.href = "RedFinal.html";
                 } 
                 else {
                     // This is the first path completed
-                    window.location.href = "Green3.html";
+                    window.location.href = "RBDoor.html";
                 }
             } else {
                 alert("The lock doesn't budge. '" + typedValue + "' is not the answer.");
